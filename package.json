@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/marcoscoelho1/clean-react/issues"
   },
-  "homepage": "https://github.com/marcoscoelho1/clean-react#readme"
+  "homepage": "https://github.com/marcoscoelho1/clean-react#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
+  }
 }
