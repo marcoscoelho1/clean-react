@@ -6,12 +6,9 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
-      "@data": ["src/data"],
-      "@data/*": ["src/data/*"],
-      "@domain": ["src/domain"],
-      "@domain/*": ["src/domain/*"]
+      "@/*": ["*"]
     }
   },
   "include": ["vite.config.ts"]
