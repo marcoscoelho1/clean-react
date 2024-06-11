@@ -1,16 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosHttpClient } from './axios-http-client'
 import axios from 'axios'
 import { faker } from '@faker-js/faker'
+import { HttpPostParams } from '@/data/protocols/http'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
-describe('AxiosHttpClient', () => {
-  test('Should call axios with correct url', async () => {
-    const url = faker.internet.url()
-    const sut = new AxiosHttpClient()
-    await sut.post({ url })
+const makeSut = () => {
+  return new AxiosHttpClient()
+}
 
-    expect(mockedAxios).toHaveBeenCalledWith(url)
+const mockPostRequest = (): HttpPostParams<any> => ({
+  url: faker.internet.url(),
+  body: {
+    obj: faker.person.firstName,
+  },
+})
+
+describe('AxiosHttpClient', () => {
+  test('Should call axios with correct values', async () => {
+    const request = mockPostRequest()
+    const sut = makeSut()
+    await sut.post(request)
+
+    expect(mockedAxios.post).toHaveBeenCalledWith(request.url, request.body)
   })
 })
